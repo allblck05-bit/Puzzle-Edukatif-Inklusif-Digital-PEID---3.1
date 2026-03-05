@@ -30,15 +30,15 @@
 html{font-size:14px;}
 body{
   min-height:100vh;
-  background:linear-gradient(180deg,#020024 0%,#090979 35%,#00D4FF 100%);
+  background:linear-gradient(180deg,#63B7B7 0%,#EBCCFF 100%);
   font-family:'Outfit',sans-serif;color:#fff;overflow-x:hidden;
   background-attachment:fixed;
 }
 body::before{
   content:'';position:fixed;inset:0;
   background:
-    radial-gradient(ellipse 60% 40% at 20% 30%,rgba(0,212,255,0.15),transparent),
-    radial-gradient(ellipse 50% 50% at 80% 70%,rgba(168,85,247,0.1),transparent);
+    radial-gradient(ellipse 60% 40% at 20% 30%,rgba(99,183,183,0.15),transparent),
+    radial-gradient(ellipse 50% 50% at 80% 70%,rgba(235,204,255,0.1),transparent);
   pointer-events:none;z-index:0;
 }
 
@@ -198,8 +198,8 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
 .board-title{font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;color:var(--white);letter-spacing:1px;text-shadow:0 0 15px rgba(0,212,255,0.5);display:flex;align-items:center;gap:8px;}
 .puzzle-board{
   display:grid;
-  grid-template-columns:repeat(4,130px);
-  grid-template-rows:repeat(4,100px);
+  grid-template-columns:repeat(3,130px);
+  grid-template-rows:repeat(3,100px);
   gap:5px;
   background:rgba(0,0,0,0.4);
   border:2px solid rgba(255,255,255,0.15);
@@ -208,8 +208,8 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
 }
 @media(max-width:768px){
   .puzzle-board{
-    grid-template-columns:repeat(4,70px);
-    grid-template-rows:repeat(4,54px);
+    grid-template-columns:repeat(3,70px);
+    grid-template-rows:repeat(3,54px);
     gap:3px;
     padding:8px;
   }
@@ -218,8 +218,8 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
 }
 @media(min-width:769px) and (max-width:900px){
   .puzzle-board{
-    grid-template-columns:repeat(4,100px);
-    grid-template-rows:repeat(4,77px);
+    grid-template-columns:repeat(3,100px);
+    grid-template-rows:repeat(3,77px);
   }
   .board-slot{width:100px!important;height:77px!important;}
   .piece{width:100px!important;height:77px!important;}
@@ -407,31 +407,48 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
 /* ── WELCOME OVERLAY ── */
 .welcome-overlay{
   position:fixed;inset:0;z-index:5000;
-  background:linear-gradient(180deg,#020024,#090979);
+  background:linear-gradient(180deg,#63B7B7,#EBCCFF);
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:24px;
   animation:none;
 }
 .welcome-overlay.fade-out{animation:fadeOutWelcome 0.8s ease forwards;}
 @keyframes fadeOutWelcome{0%{opacity:1;}100%{opacity:0;pointer-events:none;}}
-.welcome-logo{font-size:4.5rem;animation:logoBounce 1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 25px rgba(0,212,255,0.5));}
+.welcome-logo{font-size:4.5rem;animation:logoBounce 1s cubic-bezier(0.34,1.56,0.64,1);filter:drop-shadow(0 0 25px rgba(99,183,183,0.5));}
 @keyframes logoBounce{0%{transform:scale(0);}100%{transform:scale(1);}}
 .welcome-title{
   font-family:'Outfit',sans-serif;font-weight:900;font-size:clamp(1.8rem,5vw,3rem);
-  background:linear-gradient(90deg,#ffffff,#00D4FF,#a855f7);
-  background-size:300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  color:#0a0a0a;
   animation:gradientShift 3s ease infinite;margin-top:14px;
 }
-.welcome-sub{color:rgba(255,255,255,0.5);font-size:clamp(0.85rem,2vw,1rem);font-weight:500;margin:10px 0 28px;}
+.welcome-sub{color:rgba(10,10,10,0.6);font-size:clamp(0.85rem,2vw,1rem);font-weight:500;margin:10px 0 28px;}
 .welcome-mic-note{
-  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.25);border:1.5px solid rgba(255,255,255,0.3);
   border-radius:14px;padding:14px 20px;max-width:450px;
-  font-size:0.85rem;color:rgba(255,255,255,0.7);font-weight:500;line-height:1.6;margin-bottom:22px;
+  font-size:0.85rem;color:rgba(10,10,10,0.7);font-weight:500;line-height:1.6;margin-bottom:22px;
+}
+.input-group{
+  background:rgba(255,255,255,0.3);border:1.5px solid rgba(255,255,255,0.4);
+  border-radius:12px;padding:14px;margin-bottom:16px;max-width:350px;
+  backdrop-filter:blur(8px);
+}
+.input-group label{
+  display:block;font-size:0.8rem;color:rgba(10,10,10,0.7);font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;text-align:left;
+}
+.input-group input{
+  width:100%;border:none;background:rgba(255,255,255,0.6);color:#0a0a0a;
+  padding:10px 12px;border-radius:8px;font-family:'Outfit',sans-serif;
+  font-size:0.95rem;font-weight:600;
+  transition:all 0.2s;
+}
+.input-group input:focus{
+  outline:none;background:#ffffff;box-shadow:0 0 0 2px rgba(99,183,183,0.4);
 }
 .btn-enter{
   font-family:'Outfit',sans-serif;font-weight:700;font-size:1.1rem;padding:14px 36px;
   border:none;border-radius:14px;cursor:pointer;
-  background:var(--white);color:var(--black);
+  background:#fff;color:#0a0a0a;
   box-shadow:0 8px 28px rgba(255,255,255,0.3);
   animation:btnFloat 2s ease-in-out infinite alternate;
   touch-action:manipulation;
@@ -476,6 +493,44 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
   font-size:0.8rem;
   color:#fca5a5;
 }
+
+/* ── DASHBOARD MODAL ── */
+.dashboard-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.9);backdrop-filter:blur(16px);
+  z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;
+  overflow-y:auto;
+}
+.dashboard-overlay.active{display:flex;}
+.dashboard-modal{
+  background:linear-gradient(135deg,#63B7B7,#EBCCFF);
+  border:2px solid rgba(255,255,255,0.3);border-radius:24px;
+  padding:28px;max-width:520px;width:100%;
+  position:relative;box-shadow:0 0 60px rgba(99,183,183,0.25);
+  animation:modalIn 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  max-height:90vh;overflow-y:auto;
+}
+.dashboard-modal h2{
+  font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.3rem,3.5vw,1.8rem);text-align:center;
+  color:#0a0a0a;margin-bottom:20px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.dashboard-close{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#0a0a0a;border-radius:50%;width:36px;height:36px;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s;}
+.dashboard-close:hover{background:rgba(255,255,255,0.3);}
+.dashboard-item{
+  background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.2);border-radius:16px;
+  padding:16px;margin-bottom:12px;backdrop-filter:blur(8px);
+}
+.dashboard-label{font-size:0.85rem;color:rgba(10,10,10,0.6);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;display:block;}
+.dashboard-value{font-size:1.4rem;color:#0a0a0a;font-weight:800;font-family:'Outfit',sans-serif;}
+.dashboard-stat{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.dashboard-stat-box{
+  background:rgba(255,255,255,0.2);border-radius:12px;padding:12px;text-align:center;
+}
+.dashboard-stat-box .label{font-size:0.8rem;color:rgba(10,10,10,0.6);font-weight:600;margin-bottom:4px;}
+.dashboard-stat-box .value{font-size:1.8rem;color:#0a0a0a;font-weight:800;}
+
 
 /* ── MOBILE RESPONSIVE ── */
 @media(max-width:480px){
@@ -560,8 +615,16 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
     Web ini menggunakan AI suara. Izinkan akses mikrofon agar kamu bisa menjawab soal dengan berbicara langsung!<br>
     Semua tombol bisa dikontrol dengan <strong>suara</strong> atau <strong>sentuhan</strong>.
   </div>
+  <div class="input-group">
+    <label for="studentName">Nama Kamu:</label>
+    <input type="text" id="studentName" placeholder="Tuliskan nama kamu..." maxlength="50">
+  </div>
+  <div class="input-group">
+    <label for="studentCount">Jumlah Siswa:</label>
+    <input type="number" id="studentCount" placeholder="Masukkan jumlah siswa..." min="1" max="100" value="1">
+  </div>
   <button class="btn-enter" id="enterBtn" onclick="enterApp()">
-    <i class="fas fa-rocket"></i> Masuk & Aktifkan Mic!
+    <i class="fas fa-rocket"></i> Mulai Belajar!
   </button>
 </div>
 
@@ -579,6 +642,43 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
     <button class="btn btn-primary" onclick="closeCompletionModal()" style="margin-top:10px;">
       <i class="fas fa-check"></i> Oke, Lanjutkan!
     </button>
+  </div>
+</div>
+
+<!-- ── DASHBOARD MODAL ── -->
+<div class="dashboard-overlay" id="dashboardOverlay">
+  <div class="dashboard-modal">
+    <button class="dashboard-close" onclick="closeDashboard()"><i class="fas fa-times"></i></button>
+    <h2><i class="fas fa-chart-bar"></i> Dashboard Pembelajaran</h2>
+    
+    <div class="dashboard-item">
+      <label class="dashboard-label">Nama Siswa</label>
+      <div class="dashboard-value" id="dashboardName">-</div>
+    </div>
+    
+    <div class="dashboard-item">
+      <label class="dashboard-label">Jumlah Siswa</label>
+      <div class="dashboard-value" id="dashboardCount">-</div>
+    </div>
+    
+    <div class="dashboard-item">
+      <label class="dashboard-label">Waktu Pengerjaan</label>
+      <div class="dashboard-value" id="dashboardTime">00:00:00</div>
+    </div>
+    
+    <div class="dashboard-item">
+      <label class="dashboard-label">Statistik Jawaban</label>
+      <div class="dashboard-stat">
+        <div class="dashboard-stat-box">
+          <div class="label">Jawaban Benar</div>
+          <div class="value" id="dashboardCorrect">0</div>
+        </div>
+        <div class="dashboard-stat-box">
+          <div class="label">Jawaban Salah</div>
+          <div class="value" id="dashboardWrong">0</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -615,18 +715,21 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
   <!-- VOICE HINT -->
   <div class="voice-hint">
     <i class="fas fa-microphone"></i> <strong>Perintah Suara:</strong>
-    "mulai" / "start" → Mulai &nbsp;|&nbsp;
-    "selanjutnya" / "next" → Soal berikutnya &nbsp;|&nbsp;
+    "mulai" → Mulai &nbsp;|&nbsp;
+    "selanjutnya" → Soal berikutnya &nbsp;|&nbsp;
+    "ulang"/"ulangi" → Ulangi soal saat ini &nbsp;|&nbsp;
     "pasang" → Auto-pasang kepingan &nbsp;|&nbsp;
     "reset" → Reset game &nbsp;|&nbsp;
-    "bisu" / "mute" → Bisu/aktifkan suara &nbsp;|&nbsp;
+    "nyalakan suara"/"matikan suara" → Kontrol suara &nbsp;|&nbsp;
+    "aktifkan mic"/"matikan mic" → Kontrol mic &nbsp;|&nbsp;
+    "dashboard"/"laporan" → Buka dashboard &nbsp;|&nbsp;
     Atau ucapkan <strong>jawaban langsung</strong>!
   </div>
 
-  <!-- STATUS -->
-  <div class="status-bar">
-    <div class="pill"><i class="fas fa-puzzle-piece" style="color:var(--neon-blue);"></i> Pasang: <span class="v" id="pCount">0</span>/16</div>
+  <!-- STATUS -->9</div>
     <div class="pill"><i class="fas fa-star" style="color:#fbbf24;"></i> Skor: <span class="v" id="sVal">0</span></div>
+    <div class="pill"><i class="fas fa-bullseye" style="color:var(--neon-purple);"></i> Giliran: <span class="v" id="curPiece">-</span></div>
+    <div class="pill"><i class="fas fa-check-circle" style="color:var(--neon-green);"></i> Jawab: <span class="v" id="ansCount">0</span>/
     <div class="pill"><i class="fas fa-bullseye" style="color:var(--neon-purple);"></i> Giliran: <span class="v" id="curPiece">-</span></div>
     <div class="pill"><i class="fas fa-check-circle" style="color:var(--neon-green);"></i> Jawab: <span class="v" id="ansCount">0</span>/16</div>
   </div>
@@ -644,6 +747,9 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
     </button>
     <button class="btn btn-outline" id="micBtn" onclick="toggleMic()">
       <i class="fas fa-microphone-slash"></i> Mic
+    </button>
+    <button class="btn btn-dark" onclick="toggleDashboard()">
+      <i class="fas fa-chart-line"></i> Dashboard
     </button>
     <button class="btn btn-dark" onclick="resetGame()">
       <i class="fas fa-rotate-right"></i> Reset
@@ -702,10 +808,10 @@ header p{font-size:clamp(0.7rem,1.8vw,0.85rem);color:rgba(255,255,255,0.6);margi
 // ═══════════════════════════════════════════════════════════════════
 //  IMAGE - Smart Inclusive Puzzle
 // ═══════════════════════════════════════════════════════════════════
-const IMG = 'puzzle-image.jpg';
+const IMG = 'images/Smart Inclusive Puzzle (SIP) (2).jpg';
 
 // ═══════════════════════════════════════════════════════════════════
-//  PIECES DATA — 16 soal dengan angka kecil (max 50)
+//  PIECES DATA — 9 soal dengan angka kecil (max 50)
 // ═══════════════════════════════════════════════════════════════════
 const PIECES = [
   {id:1, q:"3 + 4 = ?",     a:"7",  hint:"Tiga tambah empat"},
@@ -717,18 +823,11 @@ const PIECES = [
   {id:7, q:"3 × 4 = ?",     a:"12", hint:"Tiga kali empat"},
   {id:8, q:"15 ÷ 3 = ?",    a:"5",  hint:"Lima belas dibagi tiga"},
   {id:9, q:"7 + 5 = ?",     a:"12", hint:"Tujuh tambah lima"},
-  {id:10,q:"10 - 6 = ?",    a:"4",  hint:"Sepuluh kurang enam"},
-  {id:11,q:"4 × 5 = ?",     a:"20", hint:"Empat kali lima"},
-  {id:12,q:"20 ÷ 4 = ?",    a:"5",  hint:"Dua puluh dibagi empat"},
-  {id:13,q:"6 + 7 = ?",     a:"13", hint:"Enam tambah tujuh"},
-  {id:14,q:"14 - 8 = ?",    a:"6",  hint:"Empat belas kurang delapan"},
-  {id:15,q:"5 × 3 = ?",     a:"15", hint:"Lima kali tiga"},
-  {id:16,q:"18 ÷ 6 = ?",    a:"3",  hint:"Delapan belas dibagi enam"},
 ];
 
 // Generate random read order
 function generateRandomOrder() {
-  const order = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  const order = [1,2,3,4,5,6,7,8,9];
   for (let i = order.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [order[i], order[j]] = [order[j], order[i]];
@@ -1040,6 +1139,14 @@ const synth=window.speechSynthesis;
 let isSpeaking=false;
 let microphone=null;
 
+// Dashboard State
+let studentName = "";
+let studentCount = 1;
+let gameStartTime = null;
+let timerInterval = null;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
 // set up mic/recognition once when the page is ready; this triggers
 // a permission request but only the first time, and ensures the
 // objects exist before the user tries to toggle the mic.
@@ -1338,13 +1445,39 @@ function handleVoiceInput(text){
   if(text.includes('selanjutnya')||text.includes('next')||text.includes('berikutnya')){
     if(started&&!document.getElementById('nextBtn').disabled){readNext();return;}
   }
-  if(text.includes('reset')||text.includes('ulang')){resetGame();return;}
-  if(text.includes('bisu')||text.includes('mute')){toggleMute();return;}
+  if(text.includes('ulang')||text.includes('ulangi')||text.includes('ulangin')||text.includes('repeat')){
+    if(started&&curHighlight){
+      const p=PIECES.find(x=>x.id===curHighlight);
+      if(p){
+        const msg = `Kepingan nomor ${curHighlight}. Soalnya: ${p.hint} sama dengan berapa? Ucapkan jawabanmu!`;
+        say(msg, null);
+        return;
+      }
+    }
+  }
+  if(text.includes('reset')){
+    resetGame();return;
+  }
+  if(text.includes('suara di')||text.includes('nyalakan suara')||text.includes('aktifkan suara')||text.includes('bunyiin')||text.includes('suara hidup')){
+    if(muted){toggleMute();return;}
+  }
+  if(text.includes('matikan suara')||text.includes('bisu')||text.includes('mute')||text.includes('gasin')){
+    if(!muted){toggleMute();return;}
+  }
+  if(text.includes('aktifkan mic')||text.includes('nyalakan mic')||text.includes('mic hidup')||text.includes('mic on')){
+    if(!micOn){toggleMic();return;}
+  }
+  if(text.includes('matikan mic')||text.includes('mic off')||text.includes('mic mati')||text.includes('non-aktifkan mic')){
+    if(micOn){toggleMic();return;}
+  }
   if(text.includes('pasang')||text.includes('taruh')||text.includes('place')){
     if(curHighlight&&!placed[curHighlight]){autoPlace();return;}
   }
+  if(text.includes('dashboard')||text.includes('laporan')||text.includes('statistik')){
+    toggleDashboard();return;
+  }
   if(text.includes('buka soal')||text.includes('quiz')||text.includes('tantangan')){
-    if(Object.keys(placed).length===16){showModal();return;}
+    if(Object.keys(placed).length===9){showModal();return;}
   }
   if(text.includes('bantuan')||text.includes('help')||text.includes('tolong')){
     say(getRandomResponse('help'),null);return;
@@ -1355,6 +1488,18 @@ function handleVoiceInput(text){
   if(modal.classList.contains('active')&&currentQuizQ>=0){
     handleQuizVoiceAnswer(text);
     return;
+  }
+
+  // Repeat/read current question again
+  if(text.includes('ulang')||text.includes('ulangi')||text.includes('ulangin')||text.includes('repeat')){
+    if(started&&curHighlight){
+      const p=PIECES.find(x=>x.id===curHighlight);
+      if(p){
+        const msg = `Kepingan nomor ${curHighlight}. Soalnya: ${p.hint} sama dengan berapa? Ucapkan jawabanmu!`;
+        say(msg, null);
+        return;
+      }
+    }
   }
 
   // Check if waiting for answer during puzzle
@@ -1456,9 +1601,9 @@ function initBoard(){
   const board=document.getElementById('puzzleBoard');
   board.innerHTML='';
   const pw=getPW(),ph=getPH();
-  board.style.gridTemplateColumns=`repeat(4,${pw}px)`;
-  board.style.gridTemplateRows=`repeat(4,${ph}px)`;
-  for(let i=1;i<=16;i++){
+  board.style.gridTemplateColumns=`repeat(3,${pw}px)`;
+  board.style.gridTemplateRows=`repeat(3,${ph}px)`;
+  for(let i=1;i<=9;i++){
     const slot=document.createElement('div');
     slot.className='board-slot';slot.id=`slot-${i}`;
     slot.dataset.s=i;
@@ -1483,9 +1628,9 @@ function initPieces(){
   const bankL=document.getElementById('bankLeft');
   bankL.innerHTML='';
   const pw=getPW(),ph=getPH();
-  const imgW=pw*4,imgH=ph*4;
+  const imgW=pw*3,imgH=ph*3;
   PIECES.forEach(p=>{
-    const col=(p.id-1)%4, row=Math.floor((p.id-1)/4);
+    const col=(p.id-1)%3, row=Math.floor((p.id-1)/3);
     const div=document.createElement('div');
     div.className='piece';div.id=`pc-${p.id}`;
     div.style.width=pw+'px';div.style.height=ph+'px';
@@ -1551,11 +1696,14 @@ function startGame(){
   if(started)return;
   started=true;readIdx=0;placed={};gameScore=0;curHighlight=null;
   waitingForAnswer=false;
+  correctAnswers = 0;
+  wrongAnswers = 0;
   // Generate new random order
   READ_ORDER = generateRandomOrder();
   document.getElementById('startBtn').disabled=true;
   document.getElementById('nextBtn').disabled=false;
   updateUI();
+  startTimer();
   say(getRandomResponse('gameStart'),null);
 }
 
@@ -1615,8 +1763,8 @@ function doPlace(pid,slotNum){
   waitingForAnswer = false;
   
   const pw=getPW(),ph=getPH();
-  const imgW=pw*4,imgH=ph*4;
-  const col=(pid-1)%4,row=Math.floor((pid-1)/4);
+  const imgW=pw*3,imgH=ph*3;
+  const col=(pid-1)%3,row=Math.floor((pid-1)/3);
   const slot=document.getElementById(`slot-${pid}`);
   slot.innerHTML=`<span class="slot-num">${pid}</span><img class="slot-img" src="${IMG}" style="width:${imgW}px;height:${imgH}px;left:-${col*pw}px;top:-${row*ph}px;" alt="" loading="lazy">`;
   slot.classList.add('filled','correct-flash');
@@ -1631,7 +1779,7 @@ function doPlace(pid,slotNum){
   updateStatusList();
   
   const cnt=Object.keys(placed).length;
-  if(cnt===16){
+  if(cnt===9){
     setTimeout(onPuzzleDone,600);
   } else {
     const afterResp = formatResponse('afterPlacedNext', {piece: pid});
@@ -1640,6 +1788,7 @@ function doPlace(pid,slotNum){
 }
 
 function onPuzzleDone(){
+  stopTimer();
   showFireworks();
   say(getRandomResponse('puzzleComplete'),()=>{
     setTimeout(showModal,800);
@@ -1651,7 +1800,7 @@ function onPuzzleDone(){
 // ═══════════════════════════════════════════════════════════════════
 function checkCompletion(){
   const missing = [];
-  for(let i=1;i<=16;i++){
+  for(let i=1;i<=9;i++){
     if(!placed[i]) missing.push(i);
   }
   return missing;
@@ -1767,6 +1916,7 @@ function answerQ(qNum, answer, btn){
   const isCorrect=answer===q.ans;
   if(isCorrect){
     correctCount++;
+    correctAnswers++;
     card.classList.add('ok');
     btn.classList.add('ok');
     fb.textContent=getRandomResponse('quizCorrect');
@@ -1775,6 +1925,7 @@ function answerQ(qNum, answer, btn){
   } else {
     card.classList.add('fail');
     btn.classList.add('fail');
+    wrongAnswers++;
     fb.textContent=getRandomResponse('quizIncorrect');
     fb.className='q-fb fail show';
     say(getRandomResponse('quizIncorrect'),null);
@@ -1808,6 +1959,59 @@ function closeModal(){
 }
 
 // ═══════════════════════════════════════════════════════════════════
+//  DASHBOARD FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════
+function toggleDashboard(){
+  const overlay = document.getElementById('dashboardOverlay');
+  if(overlay.classList.contains('active')){
+    closeDashboard();
+  } else {
+    openDashboard();
+  }
+}
+
+function openDashboard(){
+  updateDashboard();
+  document.getElementById('dashboardOverlay').classList.add('active');
+}
+
+function closeDashboard(){
+  document.getElementById('dashboardOverlay').classList.remove('active');
+}
+
+function updateDashboard(){
+  document.getElementById('dashboardName').textContent = studentName || 'Siswa';
+  document.getElementById('dashboardCount').textContent = studentCount;
+  document.getElementById('dashboardCorrect').textContent = correctAnswers;
+  document.getElementById('dashboardWrong').textContent = wrongAnswers;
+  updateTimerDisplay();
+}
+
+function startTimer(){
+  gameStartTime = Date.now();
+  if(timerInterval) clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopTimer(){
+  if(timerInterval) clearInterval(timerInterval);
+}
+
+function updateTimerDisplay(){
+  if(!gameStartTime) {
+    document.getElementById('dashboardTime').textContent = '00:00:00';
+    return;
+  }
+  const elapsed = Math.floor((Date.now() - gameStartTime) / 1000);
+  const hours = String(Math.floor(elapsed / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((elapsed % 3600) / 60)).padStart(2, '0');
+  const seconds = String(elapsed % 60).padStart(2, '0');
+  document.getElementById('dashboardTime').textContent = `${hours}:${minutes}:${seconds}`;
+}
+
+// ═══════════════════════════════════════════════════════════════════
 //  UTILS
 // ═══════════════════════════════════════════════════════════════════
 function updateUI(){
@@ -1824,7 +2028,7 @@ function updateStatusList(){
   }
   
   let html='';
-  for(let i=0;i<16;i++){
+  for(let i=0;i<9;i++){
     const pid=READ_ORDER[i] || i+1;
     const p=PIECES.find(x=>x.id===pid);
     const isPlaced=!!placed[pid];
@@ -1851,7 +2055,11 @@ function resetGame(){
   started=false;readIdx=0;placed={};gameScore=0;curHighlight=null;
   waitingForAnswer=false;
   quizAnswered={};correctCount=0;currentQuizQ=-1;
+  correctAnswers = 0;
+  wrongAnswers = 0;
+  gameStartTime = null;
   READ_ORDER = generateRandomOrder();
+  stopTimer();
   document.getElementById('startBtn').disabled=false;
   document.getElementById('nextBtn').disabled=true;
   initBoard();initPieces();updateUI();
@@ -1902,6 +2110,10 @@ function showFireworks(){
 }
 
 function enterApp(){
+  // Get input values
+  studentName = document.getElementById('studentName').value || 'Siswa';
+  studentCount = parseInt(document.getElementById('studentCount').value) || 1;
+  
   document.getElementById('welcomeOverlay').classList.add('fade-out');
   setTimeout(async () => {
     document.getElementById('welcomeOverlay').style.display = 'none';
